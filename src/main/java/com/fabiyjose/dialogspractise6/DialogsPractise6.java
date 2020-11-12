@@ -26,6 +26,7 @@ public class DialogsPractise6 extends javax.swing.JFrame {
     
     JFileChooser fc = new JFileChooser();
     FileNameExtensionFilter filter;
+    int umbral;
     
     public DialogsPractise6() {        
         initComponents();
@@ -277,7 +278,8 @@ public class DialogsPractise6 extends javax.swing.JFrame {
             }
         } while (!(res.matches("^[0-9]+$") && Integer.parseInt(res) <= 255 && Integer.parseInt(res) >= 0));
         
-        canvas.applyFilter(Integer.parseInt(res));
+        umbral = Integer.parseInt(res);
+        canvas.applyFilter(umbral);
         JOptionPane.showConfirmDialog(this, "Thresholding has been done. Use 'view' submenu to check it", 
                     "SUCCESS THRESHOLDING", JOptionPane.OK_CANCEL_OPTION);
     }//GEN-LAST:event_applyFilterActionPerformed
@@ -317,7 +319,7 @@ public class DialogsPractise6 extends javax.swing.JFrame {
             return;  
         }
         canvas.viewImage(2);
-        String textBorder = "FILTERED IMAGE";
+        String textBorder = "FILTERED IMAGE (Threshold: " + umbral + ")";
         jPanCont.setBorder(new TitledBorder(null, textBorder, 2, 0, new Font("Tahoma", Font.BOLD, 12), Color.BLACK));
     }//GEN-LAST:event_filteredImageActionPerformed
 
